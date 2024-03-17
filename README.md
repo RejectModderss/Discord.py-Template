@@ -7,6 +7,7 @@ This is a template for creating a Discord bot using Python and the discord.py li
 - Cog-based structure for easy management of commands.
 - Owner-only commands for bot management.
 - Command synchronization with Discord.
+- Uses sub commands in the cog `Fun`
 
 ## Installation
 
