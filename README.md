@@ -32,10 +32,10 @@ The bot has a variety of commands. Here are some examples:
 
 - `sync`: This command, available only to the bot owner, syncs all the bot's commands with Discord.
 
-## Contributing
+### Other Info
 
-Contributions are welcome! Please read the contributing guide to get started.
+Everything inside of this bot is from `discord.py 2.3.2` if you have errors, please make sure you are on the right version of dpy!
 
-## License
+I made this because others don't know cogs or don't know how to use buttons/drop downs!
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+If you need help, add me on discord `rejectmodders`! 
