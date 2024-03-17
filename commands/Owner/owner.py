@@ -1,13 +1,11 @@
 import discord, config
 from discord.ext import commands
-from typing import *
 
 
 class Bot_Admin(commands.Cog, name="Bot Admin"):
     """A set of commands only to used by the bot creators."""
     def __init__(self, bot: commands.Bot):
         self.bot = bot
-        self._last_result: Optional[Any] = None
 
     @commands.Cog.listener()
     async def on_ready(self):
@@ -35,13 +33,13 @@ class Bot_Admin(commands.Cog, name="Bot Admin"):
                 timestamp=discord.utils.utcnow(),
                 color=config.main_color
             )
-            embed.set_footer(text="Footer text?", icon_url=self.bot.user.avatar.url)
+            embed.set_footer(text=config.footer_text, icon_url=self.bot.user.avatar.url)
             await ctx.send(embed=embed)
         # If an error occurs then send the error
         except Exception as e:
             embed = discord.Embed(title='❌ ERROR',
                                   description=f'**The error occured due to following reasons.\n```{e}```',
                                   color=config.error_color)
-            embed.set_footer(text="Footer text?", icon_url=self.bot.user.avatar.url)
+            embed.set_footer(text=config.footer_text, icon_url=self.bot.user.avatar.url)
             await ctx.send(embed=embed)
             raise e

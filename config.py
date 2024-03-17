@@ -1,5 +1,7 @@
 import random
 
+footer_text = "Footer text?"  # Footer text for all embeds
+
 Default_Prefix = '!'  # Default prefix
 
 main_color = 0x5865F2  # Main color for all EMBEDS, not Errors or Success usually...

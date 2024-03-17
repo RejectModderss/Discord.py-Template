@@ -2,6 +2,8 @@ import discord, random, config
 from discord.ext import commands
 from discord import app_commands
 
+from functions.fun_commands_functions import RPS_Choices
+
 
 class Fun(commands.Cog):
     """A set of commands that can be fun for everyone."""
@@ -49,7 +51,7 @@ class Fun(commands.Cog):
             timestamp=discord.utils.utcnow(),
             color=config.main_color
         )
-        embed.set_footer(text="Footer text?", icon_url=self.bot.user.avatar.url)
+        embed.set_footer(text=config.footer_text, icon_url=self.bot.user.avatar.url)
         embed.set_thumbnail(url=coinflip_url)
 
         await ctx.send(embed=embed)
@@ -74,7 +76,7 @@ class Fun(commands.Cog):
                 timestamp=discord.utils.utcnow(),
                 color=config.error_color
             )
-            error_embed.set_footer(text="Footer text?", icon_url=self.bot.user.avatar.url)
+            error_embed.set_footer(text=config.footer_text, icon_url=self.bot.user.avatar.url)
             await ctx.send(embed=error_embed)
             return
 
@@ -85,7 +87,7 @@ class Fun(commands.Cog):
                 timestamp=discord.utils.utcnow(),
                 color=config.error_color
             )
-            error_embed.set_footer(text="Footer text?", icon_url=self.bot.user.avatar.url)
+            error_embed.set_footer(text=config.footer_text, icon_url=self.bot.user.avatar.url)
             await ctx.send(embed=error_embed)
             return
 
@@ -96,7 +98,7 @@ class Fun(commands.Cog):
                 timestamp=discord.utils.utcnow(),
                 color=config.error_color
             )
-            error_embed.set_footer(text="Footer text?", icon_url=self.bot.user.avatar.url)
+            error_embed.set_footer(text=config.footer_text, icon_url=self.bot.user.avatar.url)
             await ctx.send(embed=error_embed)
             return
 
@@ -110,5 +112,45 @@ class Fun(commands.Cog):
             timestamp=discord.utils.utcnow(),
             color=config.main_color
         )
-        result_embed.set_footer(text="Footer text?", icon_url=self.bot.user.avatar.url)
+        result_embed.set_footer(text=config.footer_text, icon_url=self.bot.user.avatar.url)
         await ctx.send(embed=result_embed)
+
+    @fun_cmd.command(name="rps")
+    @commands.guild_only()
+    @app_commands.describe(user_choice='The choice of Rock, Paper or Scissors.')
+    async def rps(self, ctx, user_choice: RPS_Choices):
+        """
+        Play Rock, Paper, Scissors with the bot!
+
+        **Usage:** rps [user_choice]
+
+        **Examples:**
+        - `rps Rock`
+        """
+        await ctx.defer()
+
+        choices = [RPS_Choices.rock, RPS_Choices.paper, RPS_Choices.scissors]
+        bot_choice = random.choice(choices)
+
+        if user_choice == bot_choice:
+            result = "It's a tie!"
+            color = 0xFFFF00
+        elif (
+                (user_choice == RPS_Choices.rock and bot_choice == RPS_Choices.scissors)
+                or (user_choice == RPS_Choices.paper and bot_choice == RPS_Choices.rock)
+                or (user_choice == RPS_Choices.scissors and bot_choice == RPS_Choices.paper)
+        ):
+            result = f"You win! {ctx.author.mention} chose {user_choice.name.lower()}, and I chose {bot_choice.name.lower()}."
+            color = config.success_color
+        else:
+            result = f"I win! {ctx.author.mention} chose {user_choice.name.lower()}, and I chose {bot_choice.name.lower()}."
+            color = config.error_color
+
+        embed = discord.Embed(
+            title="Rock, Paper, Scissors",
+            description=result,
+            timestamp=discord.utils.utcnow(),
+            color=color
+        )
+        embed.set_footer(text=config.footer_text, icon_url=self.bot.user.avatar.url)
+        await ctx.send(embed=embed)

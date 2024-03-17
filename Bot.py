@@ -1,5 +1,7 @@
 import discord, config, asyncio, time, os, aiohttp
 from discord.ext import commands, tasks
+from pretty_help import PrettyHelp
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -20,7 +22,7 @@ class Bot(commands.Bot, commands.AutoShardedBot):
         intents.invites = True
         self.db_connection = None
 
-        super().__init__(command_prefix='!', intents=intents, strip_after_prefix=True, case_insensitive=True)
+        super().__init__(command_prefix=config.Default_Prefix, intents=intents, help_command=PrettyHelp(),  strip_after_prefix=True, case_insensitive=True)
 
 
 
