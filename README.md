@@ -2,6 +2,9 @@
 
 This is a template for creating a Discord bot using Python and the discord.py library. It features a modular design with cogs for easy addition and removal of features.
 
+## REMINDER
+- Make sure the bot has a profile picture or nothing will work because the footer looks for a avatar URL from the bot, and if it returns Null, then no commands will work!
+
 ## Features
 
 - Cog-based structure for easy management of commands.
