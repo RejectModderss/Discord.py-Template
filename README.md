@@ -12,7 +12,7 @@ This is a template for creating a Discord bot using Python and the discord.py li
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/RejectModderss/Discord.py-Template`
+1. Clone the repository: `git clone https://github.com/RejectModderss/Discord.py-Template.git`
 2. Install the required dependencies: `pip install -r requirements.txt`
 3. Replace `TOKEN = "YOUR TOKEN HERE"` with your bot token!
 4. Run the bot: `python main.py`
