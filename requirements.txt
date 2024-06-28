@@ -1,4 +1,6 @@
 aiohttp~=3.9.3
 python-dotenv~=1.0.1
-discord.py==2.3.2
+discord.py
 discord-pretty-help==2.0.7
+black==24.3.0
+asyncpg

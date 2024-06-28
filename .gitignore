@@ -1,0 +1,9 @@
+#  Virtual Environment
+.venv
+venv/
+# Compiler Files
+__pycache__/
+
+# Test Files
+Test
+bot.log
