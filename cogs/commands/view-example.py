@@ -19,7 +19,7 @@ class Example(commands.Cog):
         print(f"{self.__class__.__name__} has been loaded.")
 
     @commands.command()
-    async def my_command(self, ctx: commands.Context):
+    async def example(self, ctx: commands.Context):
         """Command to interact with buttons and views."""
         view = BUTTONS(self.bot, ctx)
         await ctx.send("Interact with the buttons below:", view=view)
