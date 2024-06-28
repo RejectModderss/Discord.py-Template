@@ -2,9 +2,6 @@
 
 This is a template for creating a Discord bot using Python and the discord.py library. It features a modular design with cogs for easy addition and removal of features.
 
-## REMINDER
-- Make sure the bot has a profile picture or nothing will work because the footer looks for a avatar URL from the bot, and if it returns Null, then no commands will work!
-
 ## Features
 
 - Cog-based structure for easy management of commands.
@@ -17,10 +14,7 @@ This is a template for creating a Discord bot using Python and the discord.py li
 
 1. Clone the repository: `git clone https://github.com/RejectModderss/Discord.py-Template`
 2. Install the required dependencies: `pip install -r requirements.txt`
-3. Create a `.env` file in the root directory and add your bot token like so:
-    ```
-    TOKEN = 'YOUR BOT TOKEN HERE'
-    ```
+3. Replace `TOKEN = "YOUR TOKEN HERE"` with your bot token!
 4. Run the bot: `python main.py`
 
 ## Usage
@@ -37,7 +31,7 @@ The bot has a variety of commands. Here are some examples:
 
 ### Other Info
 
-Everything inside of this bot is from `discord.py 2.3.2` if you have errors, please make sure you are on the right version of dpy!
+Everything inside of this bot is from `discord.py 2.4.0` if you have errors, please make sure you are on the right version of dpy!
 
 I made this because others don't know cogs or don't know how to use buttons/drop downs!
 
