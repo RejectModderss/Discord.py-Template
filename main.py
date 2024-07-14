@@ -15,6 +15,7 @@ from core import Bot
 
 logging.basicConfig(
     filename="bot.log",
+    filemode="w",
     level=logging.DEBUG,
     format="[%(asctime)s] [%(levelname)s [%(lineno)d] %(message)s",
 )
