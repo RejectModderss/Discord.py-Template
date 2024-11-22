@@ -4,7 +4,8 @@ import traceback
 
 from discord.ext import commands
 
-from utils import *
+from disckit.utils import *
+from disckit import UtilConfig
 from configurations.default import DEFAULT_PREFIX
 from configurations.config import MAIN_COLOR, BotData, OWNER_IDS
 from pretty_help import PrettyHelp
@@ -24,7 +25,12 @@ class Bot(commands.Bot, commands.AutoShardedBot):
     async def setup_hook(self):
         """A function called when the bot logs in."""
 
-        BotData.AVATAR_URL = self.user.avatar.url
+        if self.user.avatar:
+            BotData.AVATAR_URL = self.user.avatar.url
+        else:
+            BotData.AVATAR_URL = None
+
+        UtilConfig.FOOTER_IMAGE = BotData.AVATAR_URL
         print(f"{self.user.name} has logged in successfully.")
 
         # You can use this to change your bots profile to a gif later!

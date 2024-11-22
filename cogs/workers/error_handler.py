@@ -82,7 +82,9 @@ class ErrorHandler(commands.Cog, name="Error Handler"):
             embed = MainEmbed(
                 title="Information", description=f"Missing Argument: `{param}`"
             )
-            embed.set_thumbnail(url="https://images.uni-bot.xyz/UniBot/missing_arg.png")
+            embed.set_thumbnail(
+                url="https://images.disutils.com/bot_assets/assets/missing_arg.png"
+            )
             embed.add_field(name="Description", value=description, inline=False)
             await ctx.send(embed=embed, ephemeral=True)
 
@@ -94,7 +96,7 @@ class ErrorHandler(commands.Cog, name="Error Handler"):
                 f"I need ``{missing_permissions}`` permission to proceed with this command.",
             )
             error_embed.set_thumbnail(
-                url="https://images.uni-bot.xyz/UniBot/Missing_perms.png"
+                url="https://images.disutils.com/bot_assets/assets/missing_perms.png"
             )
             await ctx.send(embed=error_embed, ephemeral=True)
 
@@ -107,7 +109,7 @@ class ErrorHandler(commands.Cog, name="Error Handler"):
                 f"you need ``{missing_permissions}`` permission to use this command.",
             )
             error_embed.set_thumbnail(
-                url="https://images.uni-bot.xyz/UniBot/Access_Denied.png"
+                url="https://images.disutils.com/bot_assets/assets/access_denied.png"
             )
             await ctx.send(embed=error_embed, ephemeral=True)
 

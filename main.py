@@ -3,15 +3,50 @@ import discord
 import asyncio
 import asyncpg
 import os
-import threading
 import traceback
 
 
-# hi
-import tokens
+# haii :3
+# i LOVE github merge conflict
 from databases.base import BaseData
-from configurations.config import COG_DIR
+from datetime import datetime
+from configurations.config import *
 from core import Bot
+
+from disckit import UtilConfig, CogEnum
+from disckit.cogs import dis_load_extension
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+TOKEN = os.getenv("TOKEN")
+DB_HOST = os.getenv("DB_HOST")
+DB_NAME = os.getenv("DB_NAME")
+DB_PORT = os.getenv("DB_PORT")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+
+
+def rotate_logs():
+    if not os.path.exists(LOG_DIR):
+        os.makedirs(LOG_DIR)
+
+    if os.path.exists("bot.log"):
+        timestamp = datetime.now().strftime("%m-%d-%Y-%H-%M-%S")
+        new_log_name = f"{LOG_DIR}/{timestamp}.log"
+        os.rename("bot.log", new_log_name)
+
+        log_files = sorted(
+            [f for f in os.listdir(LOG_DIR) if f.endswith(".log")],
+            key=lambda x: os.path.getmtime(os.path.join(LOG_DIR, x)),
+        )
+
+        while len(log_files) > MAX_LOGS:
+            os.remove(os.path.join(LOG_DIR, log_files.pop(0)))
+
+
+rotate_logs()
 
 logging.basicConfig(
     filename="bot.log",
@@ -64,7 +99,7 @@ async def main():
 
     bot = Bot(intents=intents)
     await load_cogs(bot=bot)
-    await bot.start(tokens.TOKEN)
+    await bot.start(TOKEN)
 
 
 if __name__ == "__main__":
